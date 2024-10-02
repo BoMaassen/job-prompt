@@ -84,17 +84,15 @@ const userInput = prompt("Over welke afdeling wil je meer informatie? Kies uit: 
 
 console.log(userInput);
 
-if(userInput === "marketing"){
+if (userInput === "marketing") {
     console.log("Je koos " + userInput + ": " + departments.marketing.description);
-}
-else if(userInput === "sales"){
+} else if (userInput === "sales") {
     console.log("Je koos " + userInput + ": " + departments.sales.description);
-}
-else if(userInput === "customer service"){
+} else if (userInput === "customer service") {
     console.log("Je koos " + userInput + ": " + departments["customer-service"].description);
-}
-else {
-    console.error("Ongeldige keuze")
+} else {
+    // console.error("Ongeldige keuze")
+    document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
 }
 
 // ------- OPDRACHT 4 -------//
@@ -108,16 +106,44 @@ const jobDescription = prompt("Je koos " + userInput + ". \n Over welke functie 
 
 console.log("jobDescription", jobDescription);
 
+const department = departments[userInput];
+const job = department.jobs[jobDescription];
+
 if (jobDescription === "0") {
-    console.log("Je koos", departments[userInput].jobs[0].title + ". Een uitdagende rol!", departments[userInput].jobs[0].description);
+    // console.log("Je koos", departments[userInput].jobs[0].title + ". Een uitdagende rol!", departments[userInput].jobs[0].description);
+    document.getElementById('role-title').textContent = job.title;
+    document.getElementById('department-description').textContent = department.description;
+    document.getElementById('role-description').textContent = job.description;
 } else if (jobDescription === "1") {
-    console.log("Je koos", departments[userInput].jobs[1].title + ". Een uitdagende rol!", departments[userInput].jobs[1].description);
+    // console.log("Je koos", departments[userInput].jobs[1].title + ". Een uitdagende rol!", departments[userInput].jobs[1].description);
+    document.getElementById('role-title').textContent = job.title;
+    document.getElementById('department-description').textContent = department.description;
+    document.getElementById('role-description').textContent = job.description;
 } else if (jobDescription === "2") {
-    console.log("Je koos", departments[userInput].jobs[2].title + ". Een uitdagende rol!", departments[userInput].jobs[2].description);
+    // console.log("Je koos", departments[userInput].jobs[2].title + ". Een uitdagende rol!", departments[userInput].jobs[2].description);
+    document.getElementById('role-title').textContent = job.title;
+    document.getElementById('department-description').textContent = department.description;
+    document.getElementById('role-description').textContent = job.description;
 } else if (jobDescription === "3") {
-    console.log("Je koos", departments[userInput].jobs[3].title + ". Een uitdagende rol!", departments[userInput].jobs[3].description);
+    // console.log("Je koos", departments[userInput].jobs[3].title + ". Een uitdagende rol!", departments[userInput].jobs[3].description);
+    document.getElementById('role-title').textContent = job.title;
+    document.getElementById('department-description').textContent = department.description;
+    document.getElementById('role-description').textContent = job.description;
 } else {
-    console.log("Ongeldige keuze");
+    // console.log("Ongeldige keuze");
+    document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
 }
+
+// ------- BONUS OPDRACHT 5 -------//
+// document.getElementById('role-title').textContent = 'banaan!';
+// document.getElementById('department-description').textContent = 'Bo Maassen';
+// document.getElementById('role-description').textContent = 'Biefstuk';
+
+// document.getElementById('role-title').textContent = departments[userInput].jobs[jobDescription].title;
+// document.getElementById('department-description').textContent = departments[userInput].description;
+// document.getElementById('role-description').textContent = departments[userInput].jobs[jobDescription].description;
+//
+// document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
+
 
 
