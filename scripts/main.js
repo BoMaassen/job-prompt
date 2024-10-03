@@ -72,3 +72,85 @@ const departments = {
 }
 
 console.log(departments);
+
+// ------- OPDRACHT 1 -------//
+
+console.log("De afdeling Sales heeft " + departments.sales.numberOfEmployees + " medewerkers");
+console.log("Marketing is een leuke afdeling om te werken. " + departments.marketing.description);
+console.log("De afdeling Customer Service heeft " + departments["customer-service"].numberOfEmployees + " medewerkers");
+console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager. " + departments.sales.jobs[0].description);
+
+// ------- OPDRACHT 2 -------//
+const userInput = prompt("Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]");
+
+console.log(userInput);
+
+if (userInput === "marketing" || userInput === "sales" || userInput === "customer-service") {
+    console.log("Je koos " + userInput + ": " + departments[userInput].description);
+} else {
+    // console.error("Ongeldige keuze")
+    document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
+}
+
+// ------- OPDRACHT 4 -------//
+
+console.log(userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+
+
+// ------- OPDRACHT 3 -------//
+
+let numberOfJobs = "";
+
+for (let i = 0; i < departments[userInput].jobs.length; i++) {
+    numberOfJobs += i + ": " + departments[userInput].jobs[i].title + "\n";
+}
+console.log(numberOfJobs);
+
+const jobDescription = prompt("Je koos " + userInput + ". \nOver welke functie wil je meer weten? Voer een getal tussen 0 en " + (departments[userInput].jobs.length - 1) + " in. \n" + numberOfJobs);
+
+
+//departments[userInput].jobs + departments[userInput].jobs[0].title + ",\n1: " + departments[userInput].jobs[1].title + ",\n2: " + departments[userInput].jobs[2].title + ",\n3: " + departments[userInput].jobs[3].title
+
+console.log("jobDescription", jobDescription);
+
+/*ik heb dit uitgecomment omdat ik de bonus opdracht hebt gemaakt en daar kortere versie heb geschreven die het zelfde doen, maar hier is nog originele van opdracht 3 te zien*/
+
+/*if (jobDescription === "0") {
+    console.log("Je koos", departments[userInput].jobs[0].title + ". Een uitdagende rol!", departments[userInput].jobs[0].description);
+} else if (jobDescription === "1") {
+    console.log("Je koos", departments[userInput].jobs[1].title + ". Een uitdagende rol!", departments[userInput].jobs[1].description);
+} else if (jobDescription === "2") {
+    console.log("Je koos", departments[userInput].jobs[2].title + ". Een uitdagende rol!", departments[userInput].jobs[2].description);
+} else if (jobDescription === "3") {
+    console.log("Je koos", departments[userInput].jobs[3].title + ". Een uitdagende rol!", departments[userInput].jobs[3].description);
+} else {
+    console.log("Ongeldige keuze");
+}*/
+
+
+// ------- BONUS OPDRACHT 5 -------//
+// document.getElementById('role-title').textContent = 'banaan!';
+// document.getElementById('department-description').textContent = 'Bo Maassen';
+// document.getElementById('role-description').textContent = 'Biefstuk';
+
+// document.getElementById('role-title').textContent = departments[userInput].jobs[jobDescription].title;
+// document.getElementById('department-description').textContent = departments[userInput].description;
+// document.getElementById('role-description').textContent = departments[userInput].jobs[jobDescription].description;
+//
+// document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
+
+const department = departments[userInput];
+const job = department.jobs[jobDescription];
+
+let stringToNumber = parseInt(jobDescription);
+
+if (stringToNumber >= 0 && stringToNumber < departments[userInput].jobs.length) {
+    // console.log("Je koos", departments[userInput].jobs[0].title + ". Een uitdagende rol!", departments[userInput].jobs[0].description);
+    document.getElementById('role-title').textContent = job.title;
+    document.getElementById('department-description').textContent = department.description;
+    document.getElementById('role-description').textContent = job.description;
+} else {
+    // console.log("Ongeldige keuze");
+    document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
+}
+
